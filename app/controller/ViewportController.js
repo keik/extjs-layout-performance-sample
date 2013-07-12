@@ -32,7 +32,8 @@ Ext.define('Sample1.controller.ViewportController', {
     },
 
     onMenuChanged: function(model, record) {
-        Ext.log('['+this.$className+'] onMenuChanged()');
+        var start = (new Date().getTime());
+        Ext.log(start +', '+ this.$className +'.onMenuChanged() start');
         var mainArea = Ext.ComponentQuery.query('viewport #main-area')[0];
 
         var id = record[0].get('id');
@@ -45,6 +46,7 @@ Ext.define('Sample1.controller.ViewportController', {
             mainArea.add(cmp);
         }
 
-
+        var end = (new Date).getTime();
+        Ext.log(end +', '+ this.$className +'.onMenuChanged() end ('+ (end - start) +' ms)');
     }
 });

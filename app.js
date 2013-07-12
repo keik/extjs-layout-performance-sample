@@ -10,7 +10,9 @@ Ext.application({
     autoCreateViewport: true,
 
     controllers: [
-        'ViewportController'
+        'ViewportController',
+        'MenuListController',
+        'ConfigPanelController'
     ],
 
     launch: function () {
