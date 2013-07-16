@@ -1,6 +1,6 @@
 Ext.define('Sample1.view.Viewport', {
     extend: 'Ext.container.Viewport',
-    alias: 'widget.viewport',
+//    alias: 'widget.viewport',
 
     layout: 'border',
 
@@ -18,7 +18,7 @@ Ext.define('Sample1.view.Viewport', {
         itemId: 'main-area',
         xtype: 'container',
         region: 'center',
-        layout: 'fit'
+        autoScroll: true
     }],
 
     initComponent : function() {

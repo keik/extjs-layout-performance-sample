@@ -1,49 +1,41 @@
 Ext.define('Sample1.view.ConfigPanel', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.form.Panel',
     alias: 'widget.config-panel',
 
-    title: 'Generate Component',
+    title: 'Generate Components',
     margin: '4 0 0 0',
-    bodyPadding: 4,
+    bodyPadding: 8,
 
     defaults: {
+        width: '80%',
+        margin: 4
     },
 
     items: [
-//        { xtype: 'grid', fieldLabel: '種類',
-//          store: 'Configs', columns: [ {dataIndex: 'text'}]
-//        },
-        { xtype: 'combo', fieldLabel: '種類',
-          store: ['aaa', 'bbb', 'ccc'],
-        },
+        { xtype: 'combo', fieldLabel: '種類', name: 'type', allowBlank: false,
+          value : 'button', store: ['button', 'label', 'random'] },
+        { xtype: 'container', width: '100%', layout: 'column', items: [
+            { xtype: 'slider', fieldLabel: '数', id: 'num-slider', name: 'num', allowBlank: false,
+              width: '80%',
+              value: 10, minValue: 0, maxValue: 200, increment: 1 },
+            { xtype: 'label', itemId: 'num-label', text: '10', margin:'0 0 0 12' }
+        ]},
+        { xtype: 'checkbox', fieldLabel: '遅延レイアウト', name: 'lazy', checked: true},
 
-        { xtype: 'combo', fieldLabel: '数' },
-        { xtype: 'combo', fieldLabel: '場所' },
-        { xtype: 'combo', fieldLabel: '方法' },
-        { xtype: 'combo', fieldLabel: 'タイミング' },
         { xtype: 'toolbar',
             ui: 'footer',
             dock: 'bottom',
-            items: ['->', {
-                text:'Generate',
-                scope: this,
-                handler: this.onClearGroupingClick
-            }]
+            items: [
+                '->',
+                { itemId: 'clear-button', text:'Clear' },
+                { itemId: 'generate-button', text:'Generate' }
+            ]
         }
     ],
 
-    initComponent : function() {
+    initComponent : function () {
         Ext.log('['+this.$className+'] initComponent()');
-
         this.callParent();
     }
-});
-
-var hoge = Ext.create('Ext.data.Store', {
-    fields: ['name'],
-    data: [
-        { "name": "button"},
-        { "name": "inputField"}
-    ]
 });
 
